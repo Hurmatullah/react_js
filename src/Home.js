@@ -1,19 +1,5 @@
-// const handleClick = () => {
-//   console.log("Congratulations, you have clicked me");
-// };
-
 import { useState } from "react";
 
-// const handleClickAgain = (name) => {
-//   console.log("you clicked me again" + " " + name);
-// };
-// const handleClick = () => {
-//   console.log("Congratulations, you have clicked me");
-// };
-
-// const handleClickAgain = (name) => {
-//   console.log("you clicked me again" + " " + name);
-// };
 const Home = () => {
   const [name, setName] = useState("Hurmat");
 
