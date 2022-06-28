@@ -3,6 +3,7 @@
 // };
 
 import { useState } from "react";
+import Bloglist from "./Blogslist";
 
 // const handleClickAgain = (name) => {
 //   console.log("you clicked me again" + " " + name);
@@ -40,12 +41,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      {blogs.map((blog) => (
-        <div className="blog-preview" key={blog.id}>
-          <h2>{blog.author}</h2>
-          <p>Year of publish: {blog.year}</p>
-        </div>
-      ))}
+      <Bloglist></Bloglist>
     </div>
   );
 };
