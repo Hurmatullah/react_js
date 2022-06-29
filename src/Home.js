@@ -3,7 +3,7 @@
 // };
 
 import { useState } from "react";
-import Bloglist from "./Blogslist";
+import Bloglist from "./Bloglist";
 
 // const handleClickAgain = (name) => {
 //   console.log("you clicked me again" + " " + name);
@@ -39,12 +39,17 @@ const Home = () => {
     { author: "Haji saeed", year: 2013, id: 3 },
   ]);
 
+  const deleteRow = (id) => {
+    const newBlogs = blogs.filter(blog => blog.id !== id);
+    setBLogs(newBlogs);
+  };
+
   return (
-    <div className="home">
-      <Bloglist blogs={blogs} title="All titles"></Bloglist>
+    <div className="Home">
       <Bloglist
-        blogs={blogs.filter((blogs) => blogs.author === "Haji saeed")}
-        title="Filtered titles"
+        blogs={blogs}
+        title="All title"
+        deleteRow={deleteRow}
       ></Bloglist>
     </div>
   );
