@@ -11,7 +11,6 @@ const Bloglist = (props) => {
           <p>Year of publish: {blog.year}</p>
         </div>
       ))}
-      console.log(props);
     </div>
   );
 };
