@@ -45,7 +45,7 @@ const Home = () => {
   useEffect(() => {
 
     setTimeout(() => {
-      fetch("http://localhost:9000/postss")
+      fetch("http://localhost:9000/posts")
       .then(res => {
         if(!res.ok)
         {
@@ -54,17 +54,23 @@ const Home = () => {
         return res.json();
       })
       .then(data => {
+        pendingDone(false);
+        showError(null);
         setBLogs(data);
+        
+
       })
-      pendingDone(false);
-      showError("Yeah couldnt file values");
+      .catch(err => {
+        pendingDone(false);
+        showError(err.message);
+      })
     }, 500);
 
   });
 
   return (
     <div className="Home">
-      {errorMessage && <div>Yeah couldnt file values</div>}
+      {errorMessage && <div>{errorMessage}</div>}
       {isPending && <div>Loading.....</div>}
       {blogs && <Bloglist blogs={blogs}title="All title"></Bloglist>}
     </div>
