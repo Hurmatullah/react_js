@@ -35,6 +35,7 @@ import Bloglist from "./Bloglist";
 const Home = () => {
   const [blogs, setBLogs] = useState(null);
   const [isPending, pendingDone] = useState(true);
+  const [errorMessage, showError] = useState(null);
 
   const deleteRow = (id) => {
     const newBlogs = blogs.filter(blog => blog.id !== id);
@@ -44,20 +45,26 @@ const Home = () => {
   useEffect(() => {
 
     setTimeout(() => {
-      fetch("http://localhost:9000/posts")
+      fetch("http://localhost:9000/postss")
       .then(res => {
+        if(!res.ok)
+        {
+         throw Error("Yeah couldnt file values");
+        }
         return res.json();
       })
       .then(data => {
         setBLogs(data);
       })
       pendingDone(false);
+      showError("Yeah couldnt file values");
     }, 500);
 
   });
 
   return (
     <div className="Home">
+      {errorMessage && <div>Yeah couldnt file values</div>}
       {isPending && <div>Loading.....</div>}
       {blogs && <Bloglist blogs={blogs}title="All title"></Bloglist>}
     </div>
