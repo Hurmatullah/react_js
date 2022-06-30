@@ -33,23 +33,31 @@ import Bloglist from "./Bloglist";
 // };
 
 const Home = () => {
-  const [blogs, setBLogs] = useState([
-    { author: "Hurmatullah", year: 2012, id: 1 },
-    { author: "Karimi", year: 2015, id: 2 },
-    { author: "Haji saeed", year: 2013, id: 3 },
-  ]);
+  const [blogs, setBLogs] = useState(null);
 
   const deleteRow = (id) => {
     const newBlogs = blogs.filter(blog => blog.id !== id);
     setBLogs(newBlogs);
   };
 
+  useState(() => {
+
+    fetch("http://localhost:9000/posts")
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+
+
+  });
+
   return (
     <div className="Home">
       <Bloglist
         blogs={blogs}
         title="All title"
-        deleteRow={deleteRow}
       ></Bloglist>
     </div>
   );
