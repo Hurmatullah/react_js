@@ -2,7 +2,7 @@
 //   console.log("Congratulations, you have clicked me");
 // };
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Bloglist from "./Bloglist";
 
 // const handleClickAgain = (name) => {
@@ -40,14 +40,14 @@ const Home = () => {
     setBLogs(newBlogs);
   };
 
-  useState(() => {
+  useEffect(() => {
 
     fetch("http://localhost:9000/posts")
     .then(res => {
       return res.json();
     })
     .then(data => {
-      console.log(data);
+      setBLogs(data);
     })
 
 
@@ -55,10 +55,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <Bloglist
-        blogs={blogs}
-        title="All title"
-      ></Bloglist>
+      {blogs && <Bloglist blogs={blogs}title="All title"></Bloglist>}
     </div>
   );
 };
