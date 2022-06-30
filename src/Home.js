@@ -34,6 +34,7 @@ import Bloglist from "./Bloglist";
 
 const Home = () => {
   const [blogs, setBLogs] = useState(null);
+  const [isPending, pendingDone] = useState(true);
 
   const deleteRow = (id) => {
     const newBlogs = blogs.filter(blog => blog.id !== id);
@@ -42,19 +43,22 @@ const Home = () => {
 
   useEffect(() => {
 
-    fetch("http://localhost:9000/posts")
-    .then(res => {
-      return res.json();
-    })
-    .then(data => {
-      setBLogs(data);
-    })
-
+    setTimeout(() => {
+      fetch("http://localhost:9000/posts")
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setBLogs(data);
+      })
+      pendingDone(false);
+    }, 500);
 
   });
 
   return (
     <div className="Home">
+      {isPending && <div>Loading.....</div>}
       {blogs && <Bloglist blogs={blogs}title="All title"></Bloglist>}
     </div>
   );
