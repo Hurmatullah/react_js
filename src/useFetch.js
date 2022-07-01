@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 const useFetch = (url) => {
 
     const [data, setData] = useState(null);
@@ -23,7 +25,6 @@ const useFetch = (url) => {
         })
         }, 1000);
   }, [url]);
-
 
   return {data, pending, error}
 

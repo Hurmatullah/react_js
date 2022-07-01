@@ -2,7 +2,6 @@
 //   console.log("Congratulations, you have clicked me");
 // };
 
-import { useEffect, useState } from "react";
 import Bloglist from "./Bloglist";
 import useFetch from "./useFetch";
 
@@ -37,16 +36,11 @@ const Home = () => {
 
   const {data, pending, error} = useFetch("http://localhost:9000/posts");
 
-  const deleteRow = (id) => {
-    const newBlogs = blogs.filter(blog => blog.id !== id);
-    setBLogs(newBlogs);
-  };
-
   return (
     <div className="Home">
       {pending && <div>Loading values</div>}
       {error && <div>{error}</div>}
-      {blogs && <Bloglist blogs={blogs}title="All title"></Bloglist>}
+      {data && <Bloglist blogs={data}title="All title"></Bloglist>}
     </div>
   );
 };
