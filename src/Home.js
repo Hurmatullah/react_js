@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from "react";
 import Bloglist from "./Bloglist";
+import useFetch from "./useFetch";
 
 // const handleClickAgain = (name) => {
 //   console.log("you clicked me again" + " " + name);
@@ -33,37 +34,13 @@ import Bloglist from "./Bloglist";
 // };
 
 const Home = () => {
-  const [blogs, setBLogs] = useState(null);
-  const [pending, setPendings] = useState(true);
-  const [error, setErrors] = useState(null);
+
+  const {data, pending, error} = useFetch("http://localhost:9000/posts");
 
   const deleteRow = (id) => {
     const newBlogs = blogs.filter(blog => blog.id !== id);
     setBLogs(newBlogs);
   };
-
-  useEffect(() => {
-
-    setTimeout(() => {
-      fetch("http://localhost:9000/posts")
-      .then(res => {
-        if(!res.ok){
-         throw Error("I am sorry for now we are not able to fetch your data");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setBLogs(data);
-        setPendings(false);
-        setErrors(null);
-      }).catch(err => {
-        setErrors("I am sorry, for now we are not able to fetch your data");
-        setPendings(false);
-      })
-    }, 1000);
-
-
-  })
 
   return (
     <div className="Home">
