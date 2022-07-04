@@ -5,12 +5,12 @@ const Bloglist = ({ blogs, title }) => {
     <div className="home">
       <h2>{title}</h2>
       {blogs.map((blog) => (
-        <Link to={`/blogs/${blog.id}`} key={blog.id}>
-          <div className="blog-preview">
-            <h2>{blog.author}</h2>
-            <p>{blog.year}</p>
-          </div>
-        </Link>
+        <div className="blog-preview" key={blog.id}>
+          <Link to={`/blogs/${blog.id}`}>
+              <h2 id="text-headlines">Title is: {blog.title}</h2>
+              <p id="text-paragraph">Author is: {blog.author}</p>
+          </Link>
+        </div>
       ))}
     </div>
   );
