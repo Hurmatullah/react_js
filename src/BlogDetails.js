@@ -24,7 +24,7 @@ const BlogDetails = () => {
   return (
     <div className="blog-details">
       {pending && <div>Please wait</div>}
-      {error && <div>You have some problem!</div>}
+      {error && <div>You have some problem</div>}
       {blog && (
         <article>
           <h2> {blog.title} </h2>
