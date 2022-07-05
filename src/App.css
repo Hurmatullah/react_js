@@ -42,7 +42,6 @@
   padding: 10px 16px;
   margin: 20px 0px;
   border-bottom: 1px solid #fafafa;
-  
 }
 
 .blog-preview:hover {
@@ -54,6 +53,43 @@
   margin-bottom: 8px;
 }
 
-.blog-preview a{
+.blog-preview a {
   text-decoration: none;
+}
+
+.Create-blog {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Create-blog label {
+  text-align: left;
+  display: block;
+}
+
+.Create-blog h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 30px;
+}
+
+.Create-blog input,
+.Create-blog textarea,
+.Create-blog select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+
+.Create-blog button {
+  background-color: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
 }
