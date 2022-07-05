@@ -2,6 +2,8 @@ import {useState} from "react";
 
 const Create = () => {
   const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [author, setAuthor] = useState("");
 
   return (
     <div className="Create-blog">
@@ -15,15 +17,21 @@ const Create = () => {
           onChange={(e) => setTitle(e.target.value)}
         />
         <label>Content</label>
-        <textarea required></textarea>
+        <textarea
+          required
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        ></textarea>
         <label>Author</label>
-        <select>
-          <option>Josi</option>
-          <option>Yosi</option>
+        <select value={author} onChange={(e) => setAuthor(e.target.value)}>
+          <option value="josi">Josi</option>
+          <option value="yosi">Yosi</option>
         </select>
         <button>Add blog</button>
       </form>
       <p>{title}</p>
+      <p>{content}</p>
+      <p>{author}</p>
     </div>
   );
 };
