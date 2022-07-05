@@ -9,6 +9,12 @@
       "id": 2,
       "title": "json-server 2",
       "author": "Hurmat"
+    },
+    {
+      "title": "Hurmat",
+      "content": "Hey",
+      "author": "yosi",
+      "id": 3
     }
   ]
 }
